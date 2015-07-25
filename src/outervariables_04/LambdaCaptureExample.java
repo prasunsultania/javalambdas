@@ -15,12 +15,17 @@ public class LambdaCaptureExample {
 		//Lambdas can access outer scope's local variables
 		integers.forEach(x->System.out.println(x + var));
 		
+		InstanceVariable i = new InstanceVariable();
 		integers.forEach(x->{
 			//var++; //outer variables cannot be changed //should be final or effectively final
 			System.out.println(x + var);
 			
 			svar++; //static ones can be accessed and modified
 			System.out.println(svar);
+			
+			//object instance state can be accessed and modified as well
+			i.incrementI();
+			System.out.println(i.getI());
 			
 			//this points to the scope of enclosing class/method
 			if(this == INSTANCE){
